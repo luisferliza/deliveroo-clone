@@ -1,12 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native'
-import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../features/restaurantSlice'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { XMarkIcon } from 'react-native-heroicons/solid'
 import { Bar } from 'react-native-progress'
 import MapView, { Marker } from 'react-native-maps'
+import { useNavigation } from '@react-navigation/native'
+import { useSelector } from 'react-redux'
+import { selectRestaurant } from '../features/restaurantSlice'
+import { SCREENS } from '../screens'
 
 const DeliveryScreen = () => {
   const navigation = useNavigation()
@@ -15,7 +16,7 @@ const DeliveryScreen = () => {
     <View className='bg-[#00CCBB] flex-1'>
       <SafeAreaView>
         <View className='flex-row justify-between items-center p-5'>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.navigate(SCREENS.HOME)}>
             <XMarkIcon color='white' size={30} />
           </TouchableOpacity>
           <Text className='font-light text-white text-lg'>Order Help</Text>

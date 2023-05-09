@@ -5,12 +5,14 @@ import { urlFor } from '../sanity'
 import { ArrowLeftIcon, MapPinIcon, StarIcon, QuestionMarkCircleIcon, ChevronRightIcon } from 'react-native-heroicons/solid'
 import DishRow from '../components/DishRow'
 import BasketIcon from '../components/BasketIcon'
-import { useDispatch } from 'react-redux'
-import { setRestaurant } from '../features/restaurantSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectRestaurant, setRestaurant } from '../features/restaurantSlice'
+import { emptyBasket } from '../features/basketSlice'
 
 const RestaurantScreen = () => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
+  const restaurant = useSelector(selectRestaurant)
 
   const {
     params: {
@@ -28,15 +30,12 @@ const RestaurantScreen = () => {
   } = useRoute()
 
   useEffect(() => {
+    if (restaurant.id === id) return
+    dispatch(emptyBasket())
     dispatch(setRestaurant({
       id,
-      imgUrl,
       title,
-      rating,
-      genre,
       address,
-      shortDescription,
-      dishes,
       long,
       lat
     }))
@@ -109,6 +108,7 @@ const RestaurantScreen = () => {
               description={dish.short_description}
               price={dish.price}
               imgUrl={dish.image}
+              restaurantId={id}
             />
           ))}
 

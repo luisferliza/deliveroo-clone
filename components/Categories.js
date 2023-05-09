@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native'
-
 import sanityClient from '../sanity'
 import { CategoryCard } from './CategoryCard'
 

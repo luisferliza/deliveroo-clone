@@ -3,12 +3,13 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Image, Text } from 'react-native-animatable'
 import { Circle } from 'react-native-progress'
 import { useNavigation } from '@react-navigation/native'
+import { SCREENS } from '../screens'
 
 const PreparingOrderScreen = () => {
   const navigation = useNavigation()
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Delivery')
+      navigation.navigate(SCREENS.DELIVERY)
     }, 5000)
   }, [])
 

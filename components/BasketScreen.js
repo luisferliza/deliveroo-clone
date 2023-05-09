@@ -1,12 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useMemo, useState } from 'react'
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectRestaurant } from '../features/restaurantSlice'
-import { addToBasket, removeFromBasket, selectBasketItems, selectBasketTotal } from '../features/basketSlice'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { XCircleIcon } from 'react-native-heroicons/solid'
+import { selectRestaurant } from '../features/restaurantSlice'
+import { addToBasket, removeFromBasket, selectBasketItems, selectBasketTotal } from '../features/basketSlice'
 import { urlFor } from '../sanity'
+import { SCREENS } from '../screens'
 
 const BasketScreen = () => {
   const DELIVERY_FEE = 5.99
@@ -31,7 +32,6 @@ const BasketScreen = () => {
   }
 
   const addItemToBasket = (item) => {
-    console.log(item)
     dispatch(addToBasket({
       id: item.id,
       name: item.name,
@@ -78,7 +78,6 @@ const BasketScreen = () => {
           </TouchableOpacity>
         </View>
         <ScrollView>
-          {console.log({ ...groupedItemsBasket })}
           {Object.entries(groupedItemsBasket).map(([key, value], index) => (
             <View key={index} className='flex-row items-center space-x-2 px-4 py-2 bg-white my-1'>
               <Image
@@ -130,7 +129,7 @@ const BasketScreen = () => {
           </View>
           <TouchableOpacity
             className='rounded-lg bg-[#00CCBB] p-4'
-            onPress={() => navigation.navigate('PreparingOrder')}
+            onPress={() => navigation.navigate(SCREENS.PREPARING_ORDER)}
           >
             <Text className='text-center text-white text-lg font-bold'>Place Order</Text>
           </TouchableOpacity>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, TouchableOpacity, Text, Image } from 'react-native'
-import { urlFor } from '../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
 import { useDispatch, useSelector } from 'react-redux'
+import { urlFor } from '../sanity'
 import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../features/basketSlice'
 
 const DishRow = ({
@@ -10,7 +10,8 @@ const DishRow = ({
   name,
   description,
   price,
-  imgUrl
+  imgUrl,
+  restaurantId
 }) => {
   const [isPressed, setIsPressed] = React.useState(false)
   const items = useSelector((state) => selectBasketItemsWithId(state, id))

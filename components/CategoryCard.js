@@ -1,5 +1,5 @@
-import { Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { Text, Image, TouchableOpacity } from 'react-native'
 import { urlFor } from '../sanity'
 
 export const CategoryCard = ({ imgUrl, title }) => {

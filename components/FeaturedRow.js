@@ -6,6 +6,7 @@ import sanityClient from '../sanity'
 
 export const FeaturedRow = ({ id, title, featuredCategory, description }) => {
   const [restaurants, setRestaurants] = React.useState([])
+
   useEffect(() => {
     sanityClient.fetch(`
     *[_type == "featured" && _id == $id] {
@@ -21,8 +22,6 @@ export const FeaturedRow = ({ id, title, featuredCategory, description }) => {
       setRestaurants(data?.restaurants)
     })
   }, [])
-
-  console.log({ restaurants })
 
   return (
     <View>
@@ -57,6 +56,7 @@ export const FeaturedRow = ({ id, title, featuredCategory, description }) => {
         ))}
 
       </ScrollView>
+
     </View>
   )
 }
